@@ -30,5 +30,40 @@ public class CalculatorPage extends BasePageObject {
     AndroidElement hamburgerBtn = (AndroidElement) wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     return hamburgerBtn.isDisplayed();
   }
+  public void inputFirstNumber(int number1) {
+    type(MobileBy.id("com.isl.simpleapp:id/et_1"), String.valueOf(number1));}
+  public void inputSecondNumber(int number2) {
+    type(MobileBy.id("com.isl.simpleapp:id/et_2"), String.valueOf(number2));}
 
+  public void clickDropdownButton(){
+    click(MobileBy.id("com.isl.simpleapp:id/spinner_1"));
+  }
+  public void selectSubtractionSign(){
+    click(MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[2]"));
+  }
+  public void selectDivisionSign(){
+    click(MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[3]"));
+  }
+  public void selectMultiplicationSign(){
+    click(MobileBy.xpath("/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[4]"));
+  }
+  public void clickEqualButton(){
+    click(MobileBy.id("com.isl.simpleapp:id/acb_calculate"));
+  }
+  public String getResult(){
+    return getText(MobileBy.id("com.isl.simpleapp:id/tv_result"));
+  }
+  public void emptyFirstNumber(){
+    emptyField(MobileBy.id("com.isl.simpleapp:id/et_1"));
+  }
+  public void emptySecondNumber(){
+    emptyField(MobileBy.id("com.isl.simpleapp:id/et_2"));
+  }
+  public boolean equalButtonDisable(){
+    AndroidElement element = find(MobileBy.id("com.isl.simpleapp:id/acb_calculate"));
+    if (element.isEnabled()){
+      return false;
+    }
+    else {return true;
+    }}
 }

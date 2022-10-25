@@ -41,4 +41,15 @@ public class LoginPageSteps extends BaseTest {
     //Hamcrest
     MatcherAssert.assertThat(isDisplayed, Matchers.equalTo(true));
   }
+
+  @Given("user already login")
+  public void userAlreadyLogin() {
+    loginPage.inputUsername("admin");
+    loginPage.inputPassword("admin");
+    loginPage.clickLoginBtn();
+    String titleText = calculatorPage.getTitle();
+    Assertions.assertEquals("Calculator", titleText);
+    boolean isDisplayed = calculatorPage.checkHamburgerBtnAppear();
+    Assertions.assertTrue(isDisplayed);
+  }
 }

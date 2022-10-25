@@ -5,7 +5,12 @@ import static com.example.app.drivers.AndroidDriverInit.driver;
 import com.example.app.base.BasePageObject;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.AndroidKey;
 import org.openqa.selenium.By;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
+
+
 
 public class LoginPage extends BasePageObject {
 
@@ -14,7 +19,7 @@ public class LoginPage extends BasePageObject {
 //    AndroidElement tfUsername = driver.findElement(locator);
 //    tfUsername.clear();
 //    tfUsername.sendKeys(username);
-    type(MobileBy.id("username"), username);
+    type(MobileBy.id("com.isl.simpleapp:id/username"), username);
   }
 
   public void inputPassword(String password) {
@@ -22,14 +27,15 @@ public class LoginPage extends BasePageObject {
 //    AndroidElement tfPassword = driver.findElement(locator);
 //    tfPassword.clear();
 //    tfPassword.sendKeys(password);
-    type(MobileBy.id("password"), password);
+    type(MobileBy.id("com.isl.simpleapp:id/password"), password);
   }
 
   public void clickLoginBtn() {
 //    By locator = MobileBy.id("login");
 //    AndroidElement btnLogin = driver.findElement(locator);
 //    btnLogin.click();
-    click(MobileBy.id("login"));
+    click(MobileBy.id("com.isl.simpleapp:id/login"));
+//    driver.pressKey(new KeyEvent(AndroidKey.BACK)); it used to click back button on android devices
   }
 
 }

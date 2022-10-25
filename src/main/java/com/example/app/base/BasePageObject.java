@@ -33,4 +33,9 @@ public class BasePageObject {
     return find(by).isDisplayed();
   }
 
+  public void emptyField(By by){
+    AndroidElement element = find(by);
+    element.clear();
+  }
+
 }
